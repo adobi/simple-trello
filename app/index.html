@@ -19,8 +19,8 @@
   <body ng-app="simpleTrelloApp">
 
     <div class="container-fluid list-wrapper">
-      <div class="list-container" ng-controller="MainController as mainCtrl">
-        <div class="list" ng-repeat="(index, list) in mainCtrl.lists">
+      <div class="list-container" ng-controller="ListsController as listsCtrl">
+        <div class="list" ng-repeat="(index, list) in listsCtrl.lists">
           <list-details></list-details>
           <cards></cards>
         </div>

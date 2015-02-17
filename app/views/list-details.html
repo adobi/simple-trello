@@ -5,17 +5,17 @@
       <i class="glyphicon glyphicon-cog"></i>
     </a>
     <ul class="dropdown-menu">
-      <li><a href="#" ng-click="mainCtrl.setListEdit(index, true)">Edit</a></li>
+      <li><a href="#" ng-click="listsCtrl.setEditable(index, true)">Edit</a></li>
       <li><a href="#">Delete</a></li>
     </ul>
   </div>
 </h3>
-<form name="listEditForm" novalidate ng-show="list.isEditable" ng-submit="mainCtrl.saveList(index, list)">
+<form name="listEditForm" novalidate ng-show="list.isEditable" ng-submit="listsCtrl.saveList(index, list)">
   <div class="form-group">
     <input class="form-control" type="text" required="" ng-model="list.name"/>
   </div>
   <div class="text-right">
-    <a class="btn btn-default btn-sm" href="#" ng-click="mainCtrl.setListEdit(index, false)">Cancel</a>
+    <a class="btn btn-default btn-sm" href="#" ng-click="listsCtrl.setEditable(index, false)">Cancel</a>
     <button class="btn btn-primary btn-sm" type="submit">Save</button>
   </div>
 </form>

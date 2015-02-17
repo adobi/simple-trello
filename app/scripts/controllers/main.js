@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name simpleTrelloApp.controller:MainCtrl
+ * @name simpleTrelloApp.controller:ListsCtrl
  * @description
- * # MainCtrl
+ * # ListsCtrl
  * Controller of the simpleTrelloApp
  */
 angular.module('simpleTrelloApp')
-  .controller('MainController', function ($scope) {
+  .controller('ListsController', function ($scope) {
     this.lists =
       [
         {
@@ -24,7 +24,7 @@ angular.module('simpleTrelloApp')
         }
       ]
 
-    this.setListEdit = function(index, value)
+    this.setEditable = function(index, value)
     {
       this.lists[index].isEditable = value
     }
@@ -34,19 +34,8 @@ angular.module('simpleTrelloApp')
       this.lists[index].name = values.name
       this.lists[index].isEditable = false
     }
-
-    this.setCardEdit = function(index, value, cindex)
-    {
-      this.lists[index].cards[cindex].isEditable = value
-    }
-
-    this.saveCard = function(index, values, cindex)
-    {
-      this.lists[index].cards[cindex].name = values.name
-      this.lists[index].cards[cindex].isEditable = false
-    }
   })
-  .controller('CardController', function() {
+  .controller('CardsController', function() {
     this.card = {}
 
     this.addCard = function(list)
@@ -54,6 +43,18 @@ angular.module('simpleTrelloApp')
       list.cards.push(this.card)
       this.card = {}
     }
+
+    this.saveCard = function(list, values, index)
+    {
+      list.cards[index].name = values.name
+      list.cards[index].isEditable = false
+    }
+
+    this.setEditable = function(list, value, index)
+    {
+      list.cards[index].isEditable = value
+    }
+
   })
   .directive('cards', function() {
     return {

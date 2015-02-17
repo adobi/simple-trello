@@ -1,12 +1,12 @@
 <div class="text-right">
-  <form class="form-inline" ng-controller="CardController as cardCtrl" ng-submit="cardCtrl.addCard(list) ">
+  <form class="form-inline" ng-controller="CardsController as cardCtrl" ng-submit="cardCtrl.addCard(list) ">
     <div class="form-group">
       <input type="text" class="form-control" ng-model="cardCtrl.card.name"/>
     </div>
     <button class="btn btn-primary btn-sm" type="submit">Save</button>
   </form>
 </div>
-<div class="card" ng-repeat="(cindex, card) in list.cards">
+<div class="card" ng-repeat="(cindex, card) in list.cards" ng-controller="CardsController as cardCtrl">
   <div ng-show="!card.isEditable">
     {{card.name}}
     <div class="pull-right dropdown">
@@ -14,17 +14,17 @@
         <i class="glyphicon glyphicon-cog"></i>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="#" ng-click="mainCtrl.setCardEdit(index, true, cindex)">Edit</a></li>
+        <li><a href="#" ng-click="cardCtrl.setEditable(list, true, cindex)">Edit</a></li>
         <li><a href="#">Delete</a></li>
       </ul>
     </div>
   </div>
-  <form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="mainCtrl.saveCard(index, list, cindex)">
+  <form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="cardCtrl.saveCard(list, card, cindex)">
     <div class="form-group">
       <input class="form-control" type="text" required="" ng-model="card.name"/>
     </div>
     <div class="text-right">
-      <a class="btn btn-default btn-sm" href="#" ng-click="mainCtrl.setCardEdit(index, false, cindex)">Cancel</a>
+      <a class="btn btn-default btn-sm" href="#" ng-click="cardCtrl.setEditable(list, false, cindex)">Cancel</a>
       <button class="btn btn-primary btn-sm" type="submit">Save</button>
     </div>
   </form>

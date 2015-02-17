@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: ListsCtrl', function () {
 
   // load the controller's module
   beforeEach(module('simpleTrelloApp'));
 
-  var MainCtrl,
+  var ListsCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    ListsCtrl = $controller('ListsCtrl', {
       $scope: scope
     });
   }));
