@@ -1,8 +1,9 @@
-<div class="text-right">
-  <new-card></new-card>
-</div>
-<div class="cards">
-  <div class="card" ng-repeat="(cindex, card) in list.cards" ng-controller="CardsController as cardsCtrl" ng-init="cardsCtrl.init(list.cards)">
+
+<div class="cards" ng-controller="CardsController as cardsCtrl" ng-init="cardsCtrl.init(list)">
+  <div class="text-right">
+    <new-card></new-card>
+  </div>
+  <div class="card" ng-repeat="(cindex, card) in list.cards">
     <card></card>
   </div>
 </div>

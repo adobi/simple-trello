@@ -1,21 +1,24 @@
 'use strict';
 
 simpleTrelloApp
-  .controller('CardsController', ['$scope', '$firebase', function ($scope, $firebase)
+  .controller('CardsController', ['$scope', '$firebase', 'CONFIG', function ($scope, $firebase, CONFIG)
   {
     this.newCard = {}
     this.master = {}
 
     this.cards = []
 
-    this.init = function(cards)
+    this.init = function(list)
     {
-      this.cards = cards
+      $scope.list = list
+
+      $scope.ref = this.ref = new Firebase(CONFIG.FirebaseUrl + list.$id)
     }
 
-    this.create = function(list)
+    this.create = function()
     {
-      list.cards.push(this.newCard)
+      this.ref.child('cards').push(this.newCard)
+      
       this.newCard = {}
     }
 
@@ -43,8 +46,6 @@ simpleTrelloApp
     this.delete = function(index)
     {
       //this.cards.splice(index, 1)
-
-
     }
   }])
   .directive('cards', function() {
