@@ -1,42 +1,12 @@
 'use strict';
 
 simpleTrelloApp
-  .controller('ListsController', ['$scope', function ($scope)
+  .controller('ListsController', ['$scope', '$firebase', function ($scope, $firebase)
   {
-    this.lists =
-      [
-        {
-          name:'Alma'
-          , cards: [
-            {name: 'Alma 1'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-            , {name: 'Alma 2'}
-          ]
-        }
-        , {
-        name: 'Korte'
-        , cards: []
-      }
-      ]
+    this.ref = new Firebase('https://adobi.firebaseio.com/')
+
+    this.store = $firebase(this.ref)
+    this.lists = this.store.$asArray();
 
     this.newList = {}
     this.master = {}
@@ -51,15 +21,16 @@ simpleTrelloApp
       }
     }
 
-    this.saveList = function(list)
+    this.update = function(list)
     {
+      this.ref.child(list.$id).update({name: list.name})
       this.setEditable(list, false)
     }
 
-    this.createList = function()
+    this.create = function()
     {
       this.newList.cards = []
-      this.lists.push(this.newList)
+      this.lists.$add(this.newList)
       this.newList = {}
     }
 
@@ -69,9 +40,9 @@ simpleTrelloApp
       this.setEditable(list, false)
     }
 
-    this.delete = function(index)
+    this.delete = function(list)
     {
-      this.lists.splice(index, 1)
+      this.ref.child(list.$id).remove()
     }
   }])
   .directive('listDetails', function() {
