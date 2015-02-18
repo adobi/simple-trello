@@ -6,11 +6,11 @@
     </a>
     <ul class="dropdown-menu">
       <li><a href="#" ng-click="cardsCtrl.setEditable(card, true)">Edit</a></li>
-      <li><a href="#" ng-click="cardsCtrl.delete(cindex)">Delete</a></li>
+      <li><a href="#" ng-click="cardsCtrl.delete(card)">Delete</a></li>
     </ul>
   </div>
 </div>
-<form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="cardEditForm.$valid && cardsCtrl.saveCard(card)">
+<form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="cardEditForm.$valid && cardsCtrl.save(card)">
   <div class="form-group">
     <input class="form-control" type="text" required="" ng-model="card.name"/>
   </div>

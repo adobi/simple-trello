@@ -1,9 +1,9 @@
 'use strict';
 
 simpleTrelloApp
-  .controller('ListsController', ['$scope', '$firebase', function ($scope, $firebase)
+  .controller('ListsController', ['$scope', '$firebase', 'CONFIG', function ($scope, $firebase, CONFIG)
   {
-    this.ref = new Firebase('https://adobi.firebaseio.com/')
+    this.ref = new Firebase(CONFIG.FirebaseUrl)
 
     this.store = $firebase(this.ref)
     this.lists = this.store.$asArray();

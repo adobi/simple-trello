@@ -1,4 +1,4 @@
-<form name="createCardForm" class="form-inline" ng-controller="CardsController as cardsCtrl" ng-submit="createCardForm.$valid && cardsCtrl.addCard(list) " novalidate="">
+<form name="createCardForm" class="form-inline" ng-controller="CardsController as cardsCtrl" ng-submit="createCardForm.$valid && cardsCtrl.create(list) " novalidate="">
   <div class="form-group">
     <input type="text" class="form-control" ng-model="cardsCtrl.newCard.name" placeholder="Card name" required />
   </div>

@@ -1,15 +1,11 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name simpleTrelloApp
- * @description
- * # simpleTrelloApp
- *
- * Main module of the application.
- */
+var simpleTrelloConfig = angular
+  .module('simpleTrelloConfig', [])
+  .constant('CONFIG', {'FirebaseUrl': 'https://adobi.firebaseio.com/'})
+
 var simpleTrelloApp = angular
-  .module('simpleTrelloApp', ['firebase'])
+  .module('simpleTrelloApp', ['firebase', 'simpleTrelloConfig'])
   .directive('a', function() {
     return {
       restrict: 'E',
@@ -22,3 +18,4 @@ var simpleTrelloApp = angular
       }
     };
   });
+

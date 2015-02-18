@@ -1,7 +1,7 @@
 'use strict';
 
 simpleTrelloApp
-  .controller('CardsController', ['$scope', function($scope)
+  .controller('CardsController', ['$scope', '$firebase', function ($scope, $firebase)
   {
     this.newCard = {}
     this.master = {}
@@ -13,13 +13,13 @@ simpleTrelloApp
       this.cards = cards
     }
 
-    this.addCard = function(list)
+    this.create = function(list)
     {
       list.cards.push(this.newCard)
       this.newCard = {}
     }
 
-    this.saveCard = function(card)
+    this.save = function(card)
     {
       this.setEditable(card, false)
     }
@@ -42,7 +42,9 @@ simpleTrelloApp
 
     this.delete = function(index)
     {
-      this.cards.splice(index, 1)
+      //this.cards.splice(index, 1)
+
+
     }
   }])
   .directive('cards', function() {
