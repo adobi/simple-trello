@@ -24,9 +24,9 @@ angular.module('simpleTrelloApp')
         }
       ]
 
-    this.setEditable = function(index, value)
+    this.setEditable = function(list, value)
     {
-      this.lists[index].isEditable = value
+      list.isEditable = value
     }
 
     this.saveList = function(index, values)

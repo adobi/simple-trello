@@ -1,7 +1,7 @@
 <div class="text-right">
-  <form class="form-inline" ng-controller="CardsController as cardCtrl" ng-submit="cardCtrl.addCard(list) ">
+  <form name="createCardForm" class="form-inline" ng-controller="CardsController as cardCtrl" ng-submit="createCardForm.$valid && cardCtrl.addCard(list) " novalidate="">
     <div class="form-group">
-      <input type="text" class="form-control" ng-model="cardCtrl.card.name"/>
+      <input type="text" class="form-control" ng-model="cardCtrl.card.name" placeholder="Card name" required/>
     </div>
     <button class="btn btn-primary btn-sm" type="submit">Save</button>
   </form>
@@ -19,7 +19,7 @@
       </ul>
     </div>
   </div>
-  <form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="cardCtrl.saveCard(list, card, cindex)">
+  <form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="cardEditForm.$valid && cardCtrl.saveCard(list, card, cindex)">
     <div class="form-group">
       <input class="form-control" type="text" required="" ng-model="card.name"/>
     </div>

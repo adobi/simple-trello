@@ -49,19 +49,13 @@
 }
 
 form {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.btn-circle {
-  /*width:36px;
-  height:36px;
-  display: inline-block;
-  font-size: 18px;
-  border-radius: 50%;
-  background: white;
-  text-align: center;
-  vertical-align: middle;
-  padding:0;
-  border: 1px solid #ddd;
-  line-height: 2;*/
+.ng-dirty.ng-invalid {
+  border-color:red;
 }
+/*
+.ng-dirty.ng-valid {
+  border-color:green;
+}*/
