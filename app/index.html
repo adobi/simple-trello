@@ -24,6 +24,14 @@
           <list-details></list-details>
           <cards></cards>
         </div>
+        <div class="list text-right">
+          <form class="form-inline" name="listCreateForm" novalidate ng-submit="listCreateForm.$valid && listsCtrl.createList()">
+            <div class="form-group">
+              <input class="form-control" type="text" required="" ng-model="listsCtrl.newList.name" placeholder="New list"/>
+            </div>
+            <button class="btn btn-primary btn-sm" type="submit">Save</button>
+          </form>
+        </div>
       </div>
     </div>
 
@@ -43,9 +51,9 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

@@ -8,7 +8,8 @@
  * Controller of the simpleTrelloApp
  */
 angular.module('simpleTrelloApp')
-  .controller('ListsController', function ($scope) {
+  .controller('ListsController', ['$scope', function ($scope)
+  {
     this.lists =
       [
         {
@@ -24,37 +25,69 @@ angular.module('simpleTrelloApp')
         }
       ]
 
+    this.newList = {}
+    this.master = {}
+
     this.setEditable = function(list, value)
     {
       list.isEditable = value
+      if (value) {
+        this.master = angular.copy(list)
+      } else {
+        this.master = {}
+      }
     }
 
-    this.saveList = function(index, values)
+    this.saveList = function(list)
     {
-      this.lists[index].name = values.name
-      this.lists[index].isEditable = false
+      this.setEditable(list, false)
     }
-  })
-  .controller('CardsController', function() {
-    this.card = {}
+
+    this.createList = function()
+    {
+      this.newList.cards = []
+      this.lists.push(this.newList)
+      this.newList = {}
+    }
+
+    this.cancelEdit = function(list)
+    {
+      list.name = this.master.name
+      this.setEditable(list, false)
+    }
+
+  }])
+  .controller('CardsController', function()
+  {
+    this.newCard = {}
+    this.master = {}
 
     this.addCard = function(list)
     {
-      list.cards.push(this.card)
-      this.card = {}
+      list.cards.push(this.newCard)
+      this.newCard = {}
     }
 
-    this.saveCard = function(list, values, index)
+    this.saveCard = function(card)
     {
-      list.cards[index].name = values.name
-      list.cards[index].isEditable = false
+      this.setEditable(card, false)
     }
 
-    this.setEditable = function(list, value, index)
+    this.setEditable = function(card, value)
     {
-      list.cards[index].isEditable = value
+      card.isEditable = value
+      if (value) {
+        this.master = angular.copy(card)
+      } else {
+        this.master = {}
+      }
     }
 
+    this.cancelEdit = function(card)
+    {
+      card.name = this.master.name
+      this.setEditable(card, false)
+    }
   })
   .directive('cards', function() {
     return {

@@ -52,9 +52,9 @@ form {
   margin-bottom: 10px;
 }
 
-.ng-dirty.ng-invalid {
+/*.ng-dirty.ng-invalid {
   border-color:red;
-}
+}*/
 /*
 .ng-dirty.ng-valid {
   border-color:green;
