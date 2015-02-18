@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('simpleTrelloApp')
+simpleTrelloApp
   .controller('ListsController', ['$scope', function ($scope)
   {
     this.lists =

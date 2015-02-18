@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('simpleTrelloApp')
+simpleTrelloApp
   .controller('CardsController', ['$scope', function($scope)
   {
     this.newCard = {}
