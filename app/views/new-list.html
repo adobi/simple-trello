@@ -1,0 +1,6 @@
+<form class="form-inline" name="listCreateForm" novalidate ng-submit="listCreateForm.$valid && listsCtrl.createList()">
+  <div class="form-group">
+    <input class="form-control" type="text" required="" ng-model="listsCtrl.newList.name" placeholder="New list"/>
+  </div>
+  <button class="btn btn-primary btn-sm" type="submit">Save</button>
+</form>

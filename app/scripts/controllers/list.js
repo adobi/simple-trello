@@ -76,3 +76,9 @@ angular.module('simpleTrelloApp')
       , templateUrl: 'views/list-details.html'
     }
   })
+  .directive('newList', function() {
+    return {
+      restrict: 'E'
+      , templateUrl: 'views/new-list.html'
+    }
+  })

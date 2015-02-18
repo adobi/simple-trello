@@ -39,3 +39,15 @@ angular.module('simpleTrelloApp')
       , templateUrl: 'views/cards.html'
     }
   })
+  .directive('card', function() {
+    return {
+      restrict: 'E'
+      , templateUrl: 'views/card.html'
+    }
+  })
+  .directive('newCard', function() {
+    return {
+      restrict: 'E'
+      , templateUrl: 'views/new-card.html'
+    }
+  })

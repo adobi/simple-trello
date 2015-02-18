@@ -1,0 +1,6 @@
+<form name="createCardForm" class="form-inline" ng-controller="CardsController as cardCtrl" ng-submit="createCardForm.$valid && cardCtrl.addCard(list) " novalidate="">
+  <div class="form-group">
+    <input type="text" class="form-control" ng-model="cardCtrl.newCard.name" placeholder="Card name" required />
+  </div>
+  <button class="btn btn-primary btn-sm" type="submit">Save</button>
+</form>

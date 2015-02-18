@@ -1,0 +1,21 @@
+<div ng-show="!card.isEditable">
+  {{card.name}}
+  <div class="pull-right dropdown">
+    <a class="btn btn-primary btn-xs" href="#" data-toggle="dropdown">
+      <i class="glyphicon glyphicon-cog"></i>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="#" ng-click="cardCtrl.setEditable(card, true)">Edit</a></li>
+      <li><a href="#">Delete</a></li>
+    </ul>
+  </div>
+</div>
+<form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="cardEditForm.$valid && cardCtrl.saveCard(card)">
+  <div class="form-group">
+    <input class="form-control" type="text" required="" ng-model="card.name"/>
+  </div>
+  <div class="text-right">
+    <a class="btn btn-default btn-sm" href="#" ng-click="cardCtrl.cancelEdit(card)">Cancel</a>
+    <button class="btn btn-primary btn-sm" type="submit">Save</button>
+  </div>
+</form>
