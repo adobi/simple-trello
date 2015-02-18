@@ -32,6 +32,11 @@ angular.module('simpleTrelloApp')
       card.name = this.master.name
       this.setEditable(card, false)
     }
+
+    this.delete = function(list, index)
+    {
+      list.cards.splice(index, 1)
+    }
   }])
   .directive('cards', function() {
     return {
