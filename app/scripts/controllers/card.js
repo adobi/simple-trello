@@ -6,6 +6,13 @@ angular.module('simpleTrelloApp')
     this.newCard = {}
     this.master = {}
 
+    this.cards = []
+
+    this.init = function(cards)
+    {
+      this.cards = cards
+    }
+
     this.addCard = function(list)
     {
       list.cards.push(this.newCard)
@@ -33,9 +40,9 @@ angular.module('simpleTrelloApp')
       this.setEditable(card, false)
     }
 
-    this.delete = function(list, index)
+    this.delete = function(index)
     {
-      list.cards.splice(index, 1)
+      this.cards.splice(index, 1)
     }
   }])
   .directive('cards', function() {
