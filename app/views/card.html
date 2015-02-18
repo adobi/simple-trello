@@ -10,7 +10,7 @@
     </ul>
   </div>
 </div>
-<form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="cardEditForm.$valid && cardsCtrl.save(card)">
+<form name="cardEditForm" novalidate ng-show="card.isEditable" ng-submit="cardEditForm.$valid && cardsCtrl.save(card, cindex)">
   <div class="form-group">
     <input class="form-control" type="text" required="" ng-model="card.name"/>
   </div>

@@ -24,9 +24,11 @@ simpleTrelloApp
       this.newCard = {}
     }
 
-    this.save = function(card)
+    this.save = function(card, index)
     {
       this.setEditable(card, false)
+
+      this.cards.child(index).set(card)
     }
 
     this.setEditable = function(card, value)
@@ -42,8 +44,6 @@ simpleTrelloApp
     this.cancelEdit = function(card)
     {
       card.name = this.master.name
-
-      
 
       this.setEditable(card, false)
     }
