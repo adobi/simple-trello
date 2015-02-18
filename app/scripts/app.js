@@ -13,9 +13,9 @@ var simpleTrelloApp = angular
         if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
           elem.on('click', function(e){
             e.preventDefault()
-          });
+          })
         }
       }
-    };
-  });
+    }
+  })
 
