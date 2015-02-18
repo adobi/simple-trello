@@ -12,12 +12,14 @@ simpleTrelloApp
     {
       $scope.list = list
 
-      $scope.ref = this.ref = new Firebase(CONFIG.FirebaseUrl + list.$id)
+      this.ref = new Firebase(CONFIG.FirebaseUrl + list.$id)
+
+      this.cards = this.ref.child('cards')
     }
 
     this.create = function()
     {
-      this.ref.child('cards').push(this.newCard)
+      this.cards.push(this.newCard)
       
       this.newCard = {}
     }
@@ -40,12 +42,15 @@ simpleTrelloApp
     this.cancelEdit = function(card)
     {
       card.name = this.master.name
+
+      
+
       this.setEditable(card, false)
     }
 
     this.delete = function(index)
     {
-      //this.cards.splice(index, 1)
+      this.cards.child(index).remove()
     }
   }])
   .directive('cards', function() {
