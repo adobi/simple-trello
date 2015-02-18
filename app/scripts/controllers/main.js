@@ -17,6 +17,26 @@ angular.module('simpleTrelloApp')
           , cards: [
             {name: 'Alma 1'}
             , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
+          , {name: 'Alma 2'}
           ]
         }
         , {
@@ -57,7 +77,7 @@ angular.module('simpleTrelloApp')
     }
 
   }])
-  .controller('CardsController', function()
+  .controller('CardsController', ['$scope', function($scope)
   {
     this.newCard = {}
     this.master = {}
@@ -88,7 +108,7 @@ angular.module('simpleTrelloApp')
       card.name = this.master.name
       this.setEditable(card, false)
     }
-  })
+  }])
   .directive('cards', function() {
     return {
       restrict: 'E'
