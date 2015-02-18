@@ -8,29 +8,29 @@ angular.module('simpleTrelloApp')
         {
           name:'Alma'
           , cards: [
-          {name: 'Alma 1'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-          , {name: 'Alma 2'}
-        ]
+            {name: 'Alma 1'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+            , {name: 'Alma 2'}
+          ]
         }
         , {
         name: 'Korte'
@@ -69,6 +69,10 @@ angular.module('simpleTrelloApp')
       this.setEditable(list, false)
     }
 
+    this.delete = function(index)
+    {
+      this.lists.splice(index, 1)
+    }
   }])
   .directive('listDetails', function() {
     return {
