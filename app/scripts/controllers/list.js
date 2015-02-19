@@ -1,7 +1,7 @@
 'use strict';
 
 simpleTrelloApp
-  .controller('ListsController', ['$scope', '$firebase', 'CONFIG', function ($scope, $firebase, CONFIG)
+  .controller('ListsController', ['$firebase', 'CONFIG', function ($firebase, CONFIG)
   {
     this.ref = new Firebase(CONFIG.FirebaseUrl)
 
