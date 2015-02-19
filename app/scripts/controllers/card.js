@@ -1,8 +1,10 @@
 'use strict';
 
 simpleTrelloApp
-  .controller('CardsController', ['$firebase', 'CONFIG', function ($firebase, CONFIG)
+  .controller('CardsController', ['firebaseService', function (firebaseService)
   {
+    this.firebaseService = firebaseService
+
     this.newCard = {}
     this.master = {}
 
@@ -10,17 +12,13 @@ simpleTrelloApp
 
     this.init = function(list)
     {
-      this.list = list
-
-      this.ref = new Firebase(CONFIG.FirebaseUrl + list.$id)
-
-      this.cards = this.ref.child('cards')
+      this.cards = this.firebaseService.getListCards(list)
     }
 
     this.create = function()
     {
-      this.cards.push(this.newCard)
-      
+      this.firebaseService.createCard(this.newCard)
+
       this.newCard = {}
     }
 
@@ -28,7 +26,7 @@ simpleTrelloApp
     {
       this.setEditable(card, false)
 
-      this.cards.child(index).set(card)
+      this.firebaseService.updateCard(index, card)
     }
 
     this.setEditable = function(card, value)
@@ -50,7 +48,7 @@ simpleTrelloApp
 
     this.delete = function(index)
     {
-      this.cards.child(index).remove()
+      this.firebaseService.deleteCard(index)
     }
   }])
   .directive('cards', function() {

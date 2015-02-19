@@ -1,12 +1,11 @@
 'use strict';
 
 simpleTrelloApp
-  .controller('ListsController', ['$firebase', 'CONFIG', function ($firebase, CONFIG)
+  .controller('ListsController', ['firebaseService', function (firebaseService)
   {
-    this.ref = new Firebase(CONFIG.FirebaseUrl)
+    this.firebaseService = firebaseService
 
-    this.store = $firebase(this.ref)
-    this.lists = this.store.$asArray();
+    this.lists = this.firebaseService.getLists()
 
     this.newList = {}
     this.master = {}
@@ -23,14 +22,13 @@ simpleTrelloApp
 
     this.update = function(list)
     {
-      this.ref.child(list.$id).update({name: list.name})
+      this.firebaseService.updateList(list)
       this.setEditable(list, false)
     }
 
     this.create = function()
     {
-      this.newList.cards = []
-      this.lists.$add(this.newList)
+      this.firebaseService.createList(this.newList)
       this.newList = {}
     }
 
@@ -42,7 +40,7 @@ simpleTrelloApp
 
     this.delete = function(list)
     {
-      this.ref.child(list.$id).remove()
+      this.firebaseService.deleteList(list)
     }
   }])
   .directive('listDetails', function() {
