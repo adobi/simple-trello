@@ -12,12 +12,14 @@ simpleTrelloApp
 
     this.init = function(list)
     {
+      this.list = list
+
       this.cards = this.firebaseService.getListCards(list)
     }
 
     this.create = function()
     {
-      this.firebaseService.createCard(this.newCard)
+      this.firebaseService.createCard(this.list, this.newCard)
 
       this.newCard = {}
     }
@@ -26,7 +28,12 @@ simpleTrelloApp
     {
       this.setEditable(card, false)
 
-      this.firebaseService.updateCard(index, card)
+      this.firebaseService.updateCard(this.list, index, card)
+    }
+
+    this.delete = function(index)
+    {
+      this.firebaseService.deleteCard(this.list, index)
     }
 
     this.setEditable = function(card, value)
@@ -44,11 +51,6 @@ simpleTrelloApp
       card.name = this.master.name
 
       this.setEditable(card, false)
-    }
-
-    this.delete = function(index)
-    {
-      this.firebaseService.deleteCard(index)
     }
   }])
   .directive('cards', function() {

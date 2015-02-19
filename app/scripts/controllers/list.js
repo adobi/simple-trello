@@ -10,16 +10,6 @@ simpleTrelloApp
     this.newList = {}
     this.master = {}
 
-    this.setEditable = function(list, value)
-    {
-      list.isEditable = value
-      if (value) {
-        this.master = angular.copy(list)
-      } else {
-        this.master = {}
-      }
-    }
-
     this.update = function(list)
     {
       this.firebaseService.updateList(list)
@@ -32,16 +22,27 @@ simpleTrelloApp
       this.newList = {}
     }
 
+    this.delete = function(list)
+    {
+      this.firebaseService.deleteList(list)
+    }
+
+    this.setEditable = function(list, value)
+    {
+      list.isEditable = value
+      if (value) {
+        this.master = angular.copy(list)
+      } else {
+        this.master = {}
+      }
+    }
+
     this.cancelEdit = function(list)
     {
       list.name = this.master.name
       this.setEditable(list, false)
     }
 
-    this.delete = function(list)
-    {
-      this.firebaseService.deleteList(list)
-    }
   }])
   .directive('listDetails', function() {
     return {

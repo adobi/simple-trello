@@ -28,24 +28,22 @@ var simpleTrelloFirebase = angular
 
     var getListCards = function(list)
     {
-      this.cards = ref.child(list.$id).child('cards')
-
-      return this.cards
+      return ref.child(list.$id).child('cards')
     }
 
-    var createCard = function(card)
+    var createCard = function(list, card)
     {
-      this.cards.push(card)
+      getListCards(list).push(card)
     }
 
-    var deleteCard = function(index)
+    var deleteCard = function(list, index)
     {
-      this.cards.child(index).remove()
+      getListCards(list).child(index).remove()
     }
 
-    var updateCard = function(index, card)
+    var updateCard = function(list, index, card)
     {
-      this.cards.child(index).set(card)
+      getListCards(list).child(index).set(card)
     }
 
     return {
