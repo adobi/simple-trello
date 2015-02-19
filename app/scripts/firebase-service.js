@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
 
   var simpleTrelloFirebase = angular
     .module('simpleTrelloFirebase', ['firebase', 'simpleTrelloConfig'])
@@ -59,4 +60,3 @@
     }])
 
 }) ();
-'use strict';
